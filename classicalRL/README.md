@@ -9,7 +9,11 @@ This part takes advantage of the repository [ElegantRL](https://github.com/AI4Fi
 + Recommendation environment employs [VirtualTaobao](https://github.com/eyounx/VirtualTaobao.git). 
 The detailed algorithm (via Pytorch) can be [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1bqSnJOcAOgOtfQdZsnxT6ANj7nvyfUW0?usp=sharing).
 
+<<<<<<< HEAD
 ![details of implementation](./classicalRL/VTB_stru.png)
+=======
+![details of implementation](https://github.com/misajie/6002project-rl/blob/main/classicalRL/VTB_stru.png)
+>>>>>>> 0ec506e66ac226a194d08cdd65bd699e4c05a841
 <br/>
 
 + Another environment: [Recsim](https://github.com/google-research/recsim)
