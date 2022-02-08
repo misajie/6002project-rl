@@ -14,9 +14,9 @@ from keras import Sequential
 from keras.layers import Dense, Dropout
 
 from RLagents.DDPG import *
-from Env.env import Environment
-from Env.gen_data import DataGenerator
-from Env.embed import *
+from Env_wechat.env import Environment
+from Env_wechat.gen_data import DataGenerator
+from Env_wechat.embed import *
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # ignore warnings
 
@@ -143,7 +143,7 @@ def test_actor(actor, test_df, embeddings, dict_embeddings, ra_length, history_l
 
 
 if __name__=='__main__':
-  data_path = "./Env/original_data/ml-100k/"
+  data_path = "./Env_wechat/wechat_data/"
   temp_path = "./temp/"
 
   # Hyperparameters
@@ -163,7 +163,7 @@ if __name__=='__main__':
   fixed_length = True # Fixed memory length
   use_emb = True
 
-  dg = DataGenerator(data_path+'u.data', data_path+'u.item')
+  dg = DataGenerator(data_path+'user_data.csv')
   dg.gen_train_test(0.8, seed=42)
 
   dg.write_csv(temp_path+'train.csv', dg.train, nb_states=[history_length], nb_actions=[ra_length])
@@ -173,7 +173,7 @@ if __name__=='__main__':
 
   # Embeding or not?
   if use_emb: # Generate embeddings?
-    if "embeddings.csv" not in os.listdir(temp_path):
+    if "embeddings.csv" not in os.listdir(data_path):
       eg = EmbeddingsGenerator(dg.user_train, pd.read_csv(data_path+'u.data', sep='\t', names=['userId', 'itemId', 'rating', 'timestamp']))
       eg.train(nb_epochs=300)
       train_loss, train_accuracy = eg.test(dg.user_train)
@@ -183,7 +183,7 @@ if __name__=='__main__':
       eg.save_embeddings(temp_path+'embeddings.csv')
 
     # load embeddings
-    embeddings = Embeddings(read_embeddings(temp_path+'embeddings.csv'))
+    embeddings = Embeddings(read_embeddings(data_path+'embeddings.csv'))
     print("embedding files loaded! begin to build env")
     state_space_size = embeddings.size() * history_length
     action_space_size = embeddings.size() * ra_length
