@@ -1,5 +1,5 @@
 # Reproduce offline baselines
-## Baseline models [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1iPLxxSekquYyRIYvuxLftyPDxSou32gK#scrollTo=f3on8PlBaJGU)
+## Baseline models [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1iPLxxSekquYyRIYvuxLftyPDxSou32gK?usp=sharing)
 + [Batch RL, Rishabh Agarwal, 2020](https://github.com/google-research/batch_rl)
 + [CQL, Aviral Kumar, 2020](https://github.com/aviralkumar2907/CQL) 
 + Coding reference, simple but useful by Fujimoto: 
